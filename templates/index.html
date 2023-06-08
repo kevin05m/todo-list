@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>To-do Kevin Moreno</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}"/>
+    <script src="https://kit.fontawesome.com/a68bf52fb0.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="app">
+        <header>
+            <div class="title">
+                <h1>Aplicacion para Epistemologia del Software</h1>
+            </div>
+        </header>
+        <div class="list">
+            <ul type="1" start="0">
+                {% for todo in todos %}
+                  <li>
+                    <input type="checkbox" name="done" {% if todo['done'] %}checked{% endif %} onchange="this.form.submit()">
+                    <span {% if todo['done'] %}style="text-decoration: line-through"{% endif %}>{{ todo['task'] }}</span>
+                    <a href="{{ url_for('edit', index=loop.index0) }}" class="edit">Editar</a>
+                    <a href="{{ url_for('delete', index=loop.index0) }}" class="eliminar">Eliminar</a>
+                  </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form action="{{ url_for('add') }}" method="post" class="formulario">
+          <input type="text" name="todo" class="tareasinput">
+          <button type="submit" class="buttonenviar"><i class="fa-solid fa-plus"></i></button>
+        </form>
+    </div>
+  </body>
+</html>
