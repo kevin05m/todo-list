@@ -2,13 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Edit Todo</title>
+    <title>Editar Tarea</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}"/>
   </head>
   <body>
-    <h1>Edit Todo</h1>
-    <form action="{{ url_for('edit', index=index) }}" method="post">
-      <input type="text" name="todo" value="{{ todo['task'] }}">
-      <button type="submit">Save</button>
-    </form>
+    <section class="app">
+      <h1>Editar Tarea</h1>
+      <form action="{{ url_for('edit', index=index) }}" method="post">
+        <input type="text" name="todo" value="{{ todo['task'] }}" class="tareasinput">
+        <button type="submit" class="buttonedit">Guardar</button>
+      </form>
+    </section>
   </body>
 </html>

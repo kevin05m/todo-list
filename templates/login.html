@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login To-Do</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='login.css') }}"/>
+</head>
+<body>
+    <form action="{{ url_for('logincomp') }}" method="post">
+        <div class="imgcontainer">
+          <img src="/static/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+      
+        <div class="container">
+          <label for="uname"><b>Usuario</b></label>
+          <input type="text" placeholder="Ingrese el Usuario" name="uname" required>
+      
+          <label for="psw"><b>Contraseña</b></label>
+          <input type="password" placeholder="Ingrese la Contraseña" name="psw" required>
+      
+          <button type="submit">Ingresar</button>
+        </div>
+      </form>
+</body>
+</html>

@@ -3,10 +3,25 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 todos = []
+username = "kevin"
+password = "root"
 
 @app.route('/')
 def index():
     return render_template('index.html', todos=todos)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/logincomp', methods=['GET', 'POST'])
+def logincomp():
+    userinp = request.form['uname']
+    passinp = request.form['psw']
+    if username == userinp and password==passinp:
+        return redirect(url_for('index'))
+    else:
+        return render_template('login.html')
 
 @app.route('/add', methods=['POST'])
 def add():
